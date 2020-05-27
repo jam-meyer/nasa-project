@@ -28,8 +28,8 @@ public class PhotoController {
 	}
 	@CrossOrigin
 	@GetMapping(value = "api/v1/{name}/photo/{id}")
-	public ResponseEntity<byte[]> getImgUrl(@PathVariable String id, @RequestParam("img_src") String imgSrc) throws IOException {
-		File file = photoService.getPhoto(imgSrc);
+	public ResponseEntity<byte[]> getImgUrl(@PathVariable String name, @PathVariable String id, @RequestParam("img_src") String imgSrc) throws IOException {
+		File file = photoService.getPhoto(imgSrc, name);
 		return ResponseEntity.ok()
 				.contentType(MediaType.IMAGE_JPEG)
 				.body(Files.readAllBytes(file.toPath()));

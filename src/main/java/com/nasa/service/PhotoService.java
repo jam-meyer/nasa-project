@@ -9,7 +9,6 @@ import com.nasa.client.NasaRestClient;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,20 +30,29 @@ public class PhotoService {
     	return nasaRestClient.getPhotoSet(name,date);
     }
     
-    public File getPhoto(String imgUrl) throws IOException {
+    public File getPhoto(String imgUrl, String name) throws IOException {
     	String IMAGE_CACHE_PATH = "src/main/resources/nasaimage";
     	
     	byte[] stringBytes = imgUrl.getBytes();
+    	
 
-		final String imageFileName = new StringBuilder().append(stringBytes).toString();
+    	if(name.equals("curiosity")) {
+    		imgUrl = imgUrl.replace("http://mars.jpl.nasa.gov" , "https://mars.nasa.gov");
+    	}
+    	if (name.equals("opportunity")) {
+    		imgUrl = imgUrl.replace("http://" , "https://");
+    	}
+    	
+		final String imageFileName = new StringBuilder(IMAGE_CACHE_PATH).append(stringBytes).toString();
 		
 		File image;
 		
 		if (Files.exists(Paths.get(imageFileName))) { 
 			image = Paths.get(imageFileName).toFile();
 		} 
-		else {
+		else { 
 			InputStream inputStream = nasaRestClient.getPhoto(imgUrl);
+			
 			Path cachedFile = Files.createFile(Paths.get(imageFileName));
 			Files.copy(inputStream, cachedFile, StandardCopyOption.REPLACE_EXISTING);
 			IOUtils.closeQuietly(inputStream);
