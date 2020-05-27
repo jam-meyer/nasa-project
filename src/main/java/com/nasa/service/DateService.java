@@ -1,7 +1,5 @@
 package com.nasa.service;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -11,11 +9,9 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 import org.apache.commons.lang3.time.DateUtils;
-import java.text.SimpleDateFormat;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;

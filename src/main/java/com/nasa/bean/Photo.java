@@ -11,7 +11,7 @@ public class Photo {
 
 	@JsonProperty("img_src")
     private String imgSrc;
-//    private Camera camera;
+	
     private Rover rover;
 
     public long getId() {
@@ -37,14 +37,6 @@ public class Photo {
     public void setImgSrc(String imgSrc) {
         this.imgSrc = imgSrc;
     }
-
-//    public Camera getCamera() {
-//        return camera;
-//    }
-//
-//    public void setCamera(Camera camera) {
-//        this.camera = camera;
-//    }
 
     public Rover getRover() {
         return rover;

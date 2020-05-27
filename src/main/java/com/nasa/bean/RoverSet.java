@@ -3,6 +3,7 @@ package com.nasa.bean;
 import java.util.Set;
 
 public class RoverSet {
+	
 	public Set<Rover> rovers;
 
 	public Set<Rover> getRovers() {

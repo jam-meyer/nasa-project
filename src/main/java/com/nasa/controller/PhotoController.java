@@ -1,6 +1,5 @@
 package com.nasa.controller;
 
-import com.nasa.bean.Photo;
 import com.nasa.bean.PhotoSet;
 import com.nasa.service.PhotoService;
 

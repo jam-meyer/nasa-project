@@ -1,7 +1,9 @@
 package com.nasa.bean;
 
 public class Rover {
+	
 	private long id;
+	
 	private String name;
 
 	public long getId() {

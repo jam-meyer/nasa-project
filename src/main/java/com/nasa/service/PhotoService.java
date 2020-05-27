@@ -15,7 +15,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,11 +33,10 @@ public class PhotoService {
     
     public File getPhoto(String imgUrl) throws IOException {
     	String IMAGE_CACHE_PATH = "src/main/resources/nasaimage";
+    	
     	byte[] stringBytes = imgUrl.getBytes();
-    	String asciiEncondedEnglishString = new String(stringBytes, StandardCharsets.US_ASCII);
 
-    	final String sha = DigestUtils.sha512Hex(imgUrl);
-		final String imageFileName = new StringBuilder(IMAGE_CACHE_PATH).append(stringBytes).toString();
+		final String imageFileName = new StringBuilder().append(stringBytes).toString();
 		
 		File image;
 		
